@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=320">
+  <title>ReThread</title>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+
+  <!-- Onboarding -->
+  <div id="view-onboarding" class="view">
+    <div class="onboarding-content">
+      <div class="logo-large">
+        <svg width="72" height="72" viewBox="0 0 1080 1080" fill="none">
+          <rect width="1080" height="1080" rx="147" fill="#E8653A"/>
+          <path d="M344.583 852.25V405.583C344.583 390.229 350.055 377.09 360.998 366.165C371.941 355.24 385.081 349.769 400.416 349.75H679.583C694.937 349.75 708.086 355.222 719.029 366.165C729.973 377.108 735.435 390.248 735.416 405.583V852.25L540 768.5L344.583 852.25ZM400.416 767.104L540 707.083L679.583 767.104V405.583H400.416V767.104Z" fill="white"/>
+          <circle cx="393.5" cy="268.5" r="48.5" fill="white"/>
+          <ellipse cx="540" cy="268.5" rx="49" ry="48.5" fill="white"/>
+          <circle cx="686.5" cy="268.5" r="48.5" fill="white"/>
+        </svg>
+      </div>
+      <h1 class="onboarding-title">Welcome to ReThread</h1>
+      <p class="onboarding-subtitle">Organize your AI chats with tags, folders &amp; search</p>
+
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4663C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>Save chats</strong>
+            <span>One click to bookmark any conversation</span>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4663C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
+              <line x1="7" y1="7" x2="7.01" y2="7"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>Tag &amp; categorize</strong>
+            <span>Add tags and folders for easy access</span>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4663C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>Find anything</strong>
+            <span>Search across all your saved chats</span>
+          </div>
+        </div>
+      </div>
+
+      <button id="btn-get-started" class="btn-primary">Get Started</button>
+    </div>
+    <footer class="footer">
+      <span>ReThread v1.0.0 by Monceau</span>
+      <span class="footer-links"><a href="https://github.com" target="_blank">GitHub</a> <a href="https://github.com" target="_blank">Report issue</a></span>
+    </footer>
+  </div>
+
+  <!-- Empty state -->
+  <div id="view-empty" class="view" hidden>
+    <header class="header">
+      <div class="header-center">
+        <div class="logo-small">
+          <img src="../icons/logo.svg" width="28" height="28">
+        </div>
+        <span class="header-title">ReThread</span>
+      </div>
+    </header>
+    <div class="empty-content">
+      <p class="empty-text-primary">No saved chats yet.</p>
+      <p class="empty-text-secondary">Click Save on any AI chat</p>
+    </div>
+    <footer class="footer">
+      <span>ReThread v1.0.0 by Monceau</span>
+      <span class="footer-links"><a href="https://github.com" target="_blank">GitHub</a> <a href="https://github.com" target="_blank">Report issue</a></span>
+    </footer>
+  </div>
+
+  <!-- Main list -->
+  <div id="view-list" class="view" hidden>
+    <header class="header">
+      <div class="header-center">
+        <div class="logo-small">
+          <img src="../icons/logo.svg" width="28" height="28">
+        </div>
+        <span class="header-title">ReThread</span>
+      </div>
+    </header>
+
+    <!-- Filter bar: 3 rows -->
+    <div class="filter-bar">
+      <!-- Row 1: Platform chips -->
+      <div class="filter-row-platforms">
+        <div class="platform-chips">
+          <button class="chip" data-platform="claude">
+            <img class="chip-icon" src="../icons/platform-claude.svg" width="14" height="14">
+            Claude
+          </button>
+          <button class="chip" data-platform="chatgpt">
+            <img class="chip-icon" src="../icons/platform-gpt.svg" width="14" height="14">
+            GPT
+          </button>
+          <button class="chip" data-platform="gemini">
+            <img class="chip-icon" src="../icons/platform-gemini.svg" width="14" height="14">
+            Gemini
+          </button>
+          <button class="chip" data-platform="grok">
+            <img class="chip-icon" src="../icons/platform-grok.svg" width="14" height="14">
+            Grok
+          </button>
+        </div>
+      </div>
+
+      <!-- Row 2: Search + Settings -->
+      <div class="filter-row-search">
+        <div class="search-wrapper">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="search-input" class="search-input" type="text" placeholder="Search">
+        </div>
+        <button id="btn-settings" class="btn-settings" title="Settings">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        </button>
+      </div>
+
+      <!-- Row 3: Folder selector -->
+      <div class="folder-selector-wrapper">
+        <button id="folder-selector" class="folder-selector">
+          <svg class="folder-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+          <span id="folder-selector-text">All folders</span>
+          <svg class="chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="folder-dropdown" class="folder-dropdown">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <div class="list-content">
+      <section id="section-pinned" hidden>
+        <h2 class="section-header">Pinned</h2>
+        <div id="pinned-list" class="chat-list"></div>
+      </section>
+      <section id="section-recent">
+        <h2 class="section-header">Recent saved</h2>
+        <div id="recent-list" class="chat-list"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Settings view -->
+  <div id="view-settings" class="view" hidden>
+    <header class="header header--settings">
+      <button id="btn-settings-back" class="btn-back" title="Back">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <span class="header-title">Settings</span>
+    </header>
+
+    <div class="settings-content">
+      <section class="settings-section">
+        <h3 class="settings-section-title">Folders</h3>
+        <div id="settings-folder-list" class="settings-folder-list">
+          <!-- populated by JS -->
+        </div>
+        <div class="settings-create-folder">
+          <input id="settings-new-folder" class="settings-folder-input" type="text" placeholder="New folder name">
+          <button id="settings-add-folder" class="btn-primary btn-small">Create</button>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h3 class="settings-section-title">About</h3>
+        <div class="settings-about">
+          <p>ReThread v1.0.0 by Monceau</p>
+          <p><a href="https://github.com" target="_blank">GitHub</a></p>
+          <p><a href="https://github.com" target="_blank">Report issue</a></p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Delete confirmation modal -->
+  <div id="delete-modal" class="modal-overlay">
+    <div class="modal-card">
+      <p class="modal-text">Delete this chat?</p>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="btn-cancel">Cancel</button>
+        <button id="modal-delete" class="btn-delete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Folder delete modal -->
+  <div id="folder-delete-modal" class="modal-overlay">
+    <div class="modal-card">
+      <p class="modal-text">Delete this folder?</p>
+      <p class="modal-subtext">Chats won't be deleted, just unassigned.</p>
+      <div class="modal-actions">
+        <button id="folder-modal-cancel" class="btn-cancel">Cancel</button>
+        <button id="folder-modal-delete" class="btn-delete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Folder assignment modal -->
+  <div id="folder-assign-modal" class="modal-overlay">
+    <div class="modal-card modal-card--folder">
+      <p class="modal-text">Add to folder</p>
+      <div id="folder-assign-list" class="folder-assign-list">
+        <!-- populated by JS -->
+      </div>
+      <div class="folder-assign-create">
+        <input id="folder-assign-input" class="settings-folder-input" type="text" placeholder="Create new folder">
+        <button id="folder-assign-create-btn" class="btn-icon-create" title="Create">+</button>
+      </div>
+      <div class="modal-actions">
+        <button id="folder-assign-cancel" class="btn-cancel">Cancel</button>
+        <button id="folder-assign-save" class="btn-primary btn-small">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>
