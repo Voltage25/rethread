@@ -12,7 +12,7 @@ Save, organize and search your conversations across Claude, ChatGPT, Gemini and 
 
 ### Chrome Web Store (recommended)
 
-> Coming soon — review in progress.
+(https://chromewebstore.google.com/detail/rethread/mcpigebgpacoicdomgikopcmcibonkoj)
 
 ### Manual install (Developer Mode)
 
